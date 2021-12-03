@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="forms.js"></script>
+    <script src="login.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li><a id="home" href="index.html">Home</a></li>
+        <li><a class="links" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+        <li><a class="links" onclick="document.getElementById('id02').style.display='block'">Signup</a></li>
+        <li><a class="links" href="#.html">About</a></li>
+        <li><a class="links" href="#.html">Team</a></li>
+    </ul>
+
+    <header>
+        <img id="logo" src="cookie.png" alt="Image of Cookie">
+        <h1 id="title">Cookie Clicker</h1>
+        <p id="clicks">0</p>
+        <div class="stats">
+            <p class="level">Lv.1</p>
+            <progress class="progress" value="90" max="255"></progress>
+        </div>
+    </header>
+
+    <main>
+        <h1>How to play</h1>
+
+        <p>Click the cookie :)</p>
+    </main>
+
+<div id="id01">
+        <h2>Log In</h2>
+        <div class="container">
+            <form id="login">
+                <label for="user"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="user" required>
+
+                <label for="pass"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" required>
+
+                <button class="login-button-wide" id="submit" type="submit">Log In</button>
+            </form>
+        </div>
+</div>
+
+<div id="id02">
+        <h2>Create An Account</h2>
+        <div class="container">
+            <form id="signup">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="user" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" required>
+
+                <label for="score"><b>Score</b></label>
+                <input type="number" placeholder="Current Score" id="scoreForm" name="score" readonly>
+
+                <button class="login-button-wide" id="submit" type="submit">Sign Up</button>
+            </form>
+        </div>
+</div>
+
+<script>
+    var score = 0;
+
+    function click() {
+        score = score + 1;
+        document.getElementById("clicks").innerHTML = score;
+        document.getElementById("scoreForm").setAttribute('value', score);
+        document.getElementById("scoreLogin").setAttribute('value', score);
+    };
+    document.getElementById("logo").addEventListener("click", click);
+</script>
+
+</body>
+</html>
