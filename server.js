@@ -5,7 +5,7 @@ var app = express()
 var db = require("./database.js");
 // Require md5 MODULE
 var md5 = require("md5");
-const { application } = require("express");
+const { application, json } = require("express");
 // Require cors module
 const cors = require("cors");
 
@@ -28,6 +28,13 @@ app.get("/app/", (req, res, next) => {
 });
 
 // Define other CRUD API endpoints using express.js and better-sqlite3
+//testing stuff
+//reset databse
+app.delete("/app/delete/database", (req,res) => {
+	const stmt = db.prepare("DELETE FROM userinfo");
+	const info = stmt.run();
+	res.status(200).json(info);
+});
 // CREATE a new user (HTTP method POST) at endpoint /app/new/
 app.post("/app/new/", (req, res) => {
 	const stmt = db.prepare("INSERT INTO userinfo (user, pass, score) VALUES (?, ?, ?)");
@@ -48,9 +55,11 @@ app.get("/app/user/:id", (req, res) => {
 });
 
 // READ a user from user name + password
-// yeah this doesn't work
-app.get("/app/user/login", (req, res) => {
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?");
+// yeah this doesn't work ******************************************************************************************
+app.post("/app/user/login/", (req, res) => {
+	console.log('Retrieving user');
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ? LIMIT 1");
+	console.log(req);
 	const user = stmt.get(req.body.user, md5(req.body.pass));
 	res.status(200).json(user);
 }); 
@@ -66,7 +75,7 @@ app.delete("/app/delete/user/:id", (req, res) => {
 	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
 	const info = stmt.run(req.params.id);
 	res.status(200).json({"message":info.changes + " record deleted: ID " + req.params.id + " (200)"});
-})
+});
 // Default response for any other request
 app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});

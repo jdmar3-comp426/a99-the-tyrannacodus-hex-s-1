@@ -1,4 +1,4 @@
-window.addEventListener( "load", function () {
+/*window.addEventListener( "load", function () {
     function signIn() {
         const request = new XMLHttpRequest();                               // create new HTTPRequest
         const loginInfo = new URLSearchParams(new FormData (login));        // create form data
@@ -12,8 +12,9 @@ window.addEventListener( "load", function () {
         request.addEventListener( "load", function (event) {
             alert("Form successfully submitted.");
         });
-
-        request.open("GET", "http://localhost:5000/app/user/login")         // set up connection - args of HTTP method and endpoint
+        console.log(login);
+        console.log(new FormData (login));
+        request.open("GET", "http://localhost:5000/app/user/login/")         // set up connection - args of HTTP method and endpoint
         request.send( loginInfo );                                          // send the form data object
     }
 
@@ -23,4 +24,4 @@ window.addEventListener( "load", function () {
         event.preventDefault();
         signIn();       
     });
-});
+});*/
