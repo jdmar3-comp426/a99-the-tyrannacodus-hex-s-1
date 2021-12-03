@@ -1,3 +1,4 @@
+// draft of clicker function, no longer used
 var score = 0;
 
 function click() {

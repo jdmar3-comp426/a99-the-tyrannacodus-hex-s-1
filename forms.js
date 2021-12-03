@@ -1,6 +1,6 @@
 window.addEventListener( "load", function () {
     function sendData() {
-        const sendRequest = new XMLHttpRequest();           // create new HttpRequest
+        const sendRequest = new XMLHttpRequest();                                     // create new HttpRequest
         const signupInfo = new URLSearchParams(new FormData( form));                  // create new form data object
         
         // error message 
@@ -13,8 +13,8 @@ window.addEventListener( "load", function () {
             alert("Form successfully submitted.");
         });
         
-        sendRequest.open("POST", "http://localhost:5000/app/new/");                                 // set up connection - args of HTTP method and endpoint
-        sendRequest.send( signupInfo );                     // send the form data object
+        sendRequest.open("POST", "http://localhost:5000/app/new/");         // set up connection - args of HTTP method and endpoint
+        sendRequest.send( signupInfo );                                     // send the form data object
     };
 
     const form = document.getElementById("signup");         // grab the form from index.html
