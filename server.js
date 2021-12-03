@@ -59,10 +59,17 @@ app.get("/app/user/:id", (req, res) => {
 app.post("/app/user/login/", (req, res) => {
 	console.log('Retrieving user');
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ? LIMIT 1");
-	console.log(req);
+	//console.log(req);
 	const user = stmt.get(req.body.user, md5(req.body.pass));
 	res.status(200).json(user);
 }); 
+
+// UPDATE a single user (HTTP method PATCH) at endpoint /app/user/save/
+app.patch("/app/user/save/"), (req, res) => {
+	const stmt = db.prepare("UPDATE userinfo SET score = COALESCE(?,score) WHERE user = ? AND pass = ?");
+	const info = stmt.run(req.body.user, md5(req.body.pass), req.body.score);
+	res.status(200).json({"message":info.changes + " record updated: ID " + req.params.id + " (200)"});
+}
 
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 app.patch("/app/update/user/:id", (req, res) => {
@@ -70,6 +77,7 @@ app.patch("/app/update/user/:id", (req, res) => {
 	const info = stmt.run(req.body.user, md5(req.body.pass), req.body.score, req.params.id);
 	res.status(200).json({"message":info.changes + " record updated: ID " + req.params.id + " (200)"});
 });
+
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:id
 app.delete("/app/delete/user/:id", (req, res) => {
 	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
