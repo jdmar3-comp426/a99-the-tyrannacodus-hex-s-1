@@ -3,6 +3,9 @@
 
 A simple game where the user can click the cookie to gain points. Users can create an account where their current score will be saved, and updated when they log in. Users can delete their account after logging in.
 
+## Screencap Demo
+https://youtu.be/mUk4Fu6mnKw
+
 ## Server setup
 - Npm init
 - Npm install browser-sync better-sqlite3 express md5
