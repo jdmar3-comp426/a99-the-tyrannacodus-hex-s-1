@@ -42,6 +42,7 @@ window.addEventListener( "load", function () {
               }  
               if (loggedUser != undefined) {
                   document.getElementById("usersave").setAttribute("value", loggedUser);
+                  document.getElementById("currentUser").innerHTML = loggedUser;
               }
               if (loggedId != undefined) {
                   document.getElementById("idsave").setAttribute("value", loggedId);
@@ -119,7 +120,6 @@ window.addEventListener( "load", function () {
         // success message
         sendRequest.addEventListener( "load", function (event) {
             alert("Form successfully submitted.");
-            alert(url);
         });
         
         sendRequest.open("PATCH", url);         // set up connection - args of HTTP method and endpoint

@@ -17,6 +17,7 @@
     <header>
         <img id="logo" src="cookie.png" alt="Image of Cookie">
         <h1 id="title">Cookie Clicker</h1>
+        <h3 id="currentUser"></h3>
         <p id="clicks">0</p>
         <form id="saveForm">
             <input type="text" id="usersave" name="user" readonly>
@@ -60,7 +61,7 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="pass" required>
 
-                <input type="number" placeholder="Current Score" id="scoreForm" name="score" readonly>
+                <input type="number" placeholder="Current Score" id="scoreForm" name="score" value="0" readonly>
 
                 <button class="login-button-wide" id="submit" type="submit">Sign Up</button>
             </form>

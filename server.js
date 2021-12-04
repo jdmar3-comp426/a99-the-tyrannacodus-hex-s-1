@@ -59,7 +59,6 @@ app.get("/app/user/:id", (req, res) => {
 app.post("/app/user/login/", (req, res) => {
 	console.log('Retrieving user');
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ? LIMIT 1");
-	//console.log(req);
 	const user = stmt.get(req.body.user, md5(req.body.pass));
 	res.status(200).json(user);
 }); 
