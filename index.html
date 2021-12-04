@@ -13,24 +13,23 @@
 </head>
 
 <body>
-    <ul>
-        <li><a id="home" href="index.html">Home</a></li>
-        <li><a class="links" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
-        <li><a class="links" onclick="document.getElementById('id02').style.display='block'">Signup</a></li>
-        <li><a class="links" href="#.html">About</a></li>
-        <li><a class="links" href="#.html">Team</a></li>
-    </ul>
 
     <header>
         <img id="logo" src="cookie.png" alt="Image of Cookie">
         <h1 id="title">Cookie Clicker</h1>
         <p id="clicks">0</p>
+        <form id="saveForm">
+            <input type="number" id="scoresave" name="score" readonly>
+            <button class="login-button-wide" id="save" type="submit">Save Score</button>
+        </form>
     </header>
 
     <main>
         <h1>How to play</h1>
-
         <p>Click the cookie :)</p>
+        <p>Log in to load your previous score.</p>
+        <p>Click Save Score while logged in to save a new high score.</p>
+        <p>When you create a new account, the current score will be saved.</p>
     </main>
 
 <div id="id01">
@@ -44,9 +43,6 @@
                 <input type="password" placeholder="Enter Password" name="pass" required>
 
                 <button class="login-button-wide" id="logButton" type="submit">Log In</button>
-
-                <input type="number" id="scoresave" name="score" readonly>
-                <button class="login-button-wide" id="save" type="submit">Save Score</button>
             </form>
         </div>
 </div>
@@ -67,6 +63,18 @@
                 <button class="login-button-wide" id="submit" type="submit">Sign Up</button>
             </form>
         </div>
+</div>
+
+<div id = "id03">
+    <h2>Delete an Account</h2>
+    <div class="container">
+        <form id="delete">
+            <label for="id"><b>User ID</b></label>
+            <input type="number" placeholder="Enter Username" id="idform" name="id" required>
+
+            <button class="login-button-wide" id="deleteButton" type="submit">Delete</button>
+        </form>
+    </div>
 </div>
 
 <script>
