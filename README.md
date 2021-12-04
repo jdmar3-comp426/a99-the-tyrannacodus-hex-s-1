@@ -17,6 +17,7 @@ A simple game where the user can click the cookie to gain points. Users can crea
 
 
 ## Documentation
-For team roles [click here](https://github.com/jdmar3-comp426/a99-the-tyrannacodus-hex-s-1/blob/main/docs/teamRoles.md)
-For API endpoints used [click here](https://github.com/jdmar3-comp426/a99-the-tyrannacodus-hex-s-1/blob/main/docs/endpointsList.md)
+ - For team roles [click here](https://github.com/jdmar3-comp426/a99-the-tyrannacodus-hex-s-1/blob/main/docs/teamRoles.md)
+ - For API endpoints used [click here](https://github.com/jdmar3-comp426/a99-the-tyrannacodus-hex-s-1/blob/main/docs/endpointsList.md)
+ - For planning documentation archive [click her](https://github.com/jdmar3-comp426/a99-the-tyrannacodus-hex-s-1/blob/main/docs/planningarchive.md)
 
