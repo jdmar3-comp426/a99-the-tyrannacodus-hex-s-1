@@ -40,7 +40,27 @@ header {
     border-radius: 5px;
 }
 
+#usersave {
+    display: none;
+}
+
+#passsave {
+    display: none;
+}
+
+#idsave {
+    display: none;
+}
+
 #scoresave {
+    display: none;
+}
+
+#scoreForm {
+    display: none;
+}
+
+#idDelete {
     display: none;
 }
 

@@ -19,6 +19,9 @@
         <h1 id="title">Cookie Clicker</h1>
         <p id="clicks">0</p>
         <form id="saveForm">
+            <input type="text" id="usersave" name="user" readonly>
+            <input type="text" id="passsave" name="pass" readonly>
+            <input type="number" id="idsave" name="id" readonly>
             <input type="number" id="scoresave" name="score" readonly>
             <button class="login-button-wide" id="save" type="submit">Save Score</button>
         </form>
@@ -37,10 +40,10 @@
         <div class="container">
             <form id="login">
                 <label for="user"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="user" required>
+                <input  type="text" placeholder="Enter Username" id="logUser" name="user" required>
 
                 <label for="pass"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pass" required>
+                <input type="password" placeholder="Enter Password" id="logPass" name="pass" required>
 
                 <button class="login-button-wide" id="logButton" type="submit">Log In</button>
             </form>
@@ -57,7 +60,6 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="pass" required>
 
-                <label for="score"><b>Score</b></label>
                 <input type="number" placeholder="Current Score" id="scoreForm" name="score" readonly>
 
                 <button class="login-button-wide" id="submit" type="submit">Sign Up</button>
@@ -66,12 +68,10 @@
 </div>
 
 <div id = "id03">
-    <h2>Delete an Account</h2>
+    <h2>Delete your Account</h2>
     <div class="container">
         <form id="delete">
-            <label for="id"><b>User ID</b></label>
-            <input type="number" placeholder="Enter Username" id="idform" name="id" required>
-
+            <input type="number" id="idDelete" name="id" readonly>
             <button class="login-button-wide" id="deleteButton" type="submit">Delete</button>
         </form>
     </div>
@@ -86,8 +86,26 @@
         document.getElementById("clicks").innerHTML = score;
         document.getElementById("scoreForm").setAttribute('value', score);
         document.getElementById("scoresave").setAttribute('value', score);
+
+        var loggedPass = document.getElementById("logPass").getAttribute("value");
+        if (loggedPass != undefined) {
+            document.getElementById("passsave").setAttribute("value", loggedPass);
+        }
     };
     document.getElementById("logo").addEventListener("click", click);
+</script>
+
+<script>
+    // This script saves the inputted password for updates.
+    function getPassword(){
+            // Selecting the input element and get its value 
+            var loggedPass = document.getElementById("logPass").value;
+            
+            // Displaying the value
+            document.getElementById("passsave").setAttribute("value", loggedPass);
+        }
+    
+    document.getElementById("logPass").addEventListener("change", getPassword);
 </script>
 
 </body>

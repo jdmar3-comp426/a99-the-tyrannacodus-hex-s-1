@@ -31,15 +31,22 @@ window.addEventListener( "load", function () {
         sendRequest.onreadystatechange = function() {
             //4 means done
             if (sendRequest.readyState === 4) {
-              //updating the click number
+              //updating the click number and saved log-in info for other functions
               var loadScore = parseInt(JSON.parse(sendRequest.response).score);
-              var userID = parseInt(JSON.parse(sendRequest.response).id);
-              var loggedIn = true;
-              //checking to make sure that score is no undefined
+              var loggedUser = JSON.parse(sendRequest.response).user;
+              var loggedId = parseInt(JSON.parse(sendRequest.response).id);
+              //checking to make sure that the values are not undefined
               if (loadScore != undefined) {
                 document.getElementById("clicks").innerHTML = loadScore;
                 score = loadScore;
               }  
+              if (loggedUser != undefined) {
+                  document.getElementById("usersave").setAttribute("value", loggedUser);
+              }
+              if (loggedId != undefined) {
+                  document.getElementById("idsave").setAttribute("value", loggedId);
+                  document.getElementById("idDelete").setAttribute("value", loggedId);
+              }
             }
           }
         // error message 
@@ -57,10 +64,20 @@ window.addEventListener( "load", function () {
         sendRequest.send( signupInfo );                                     // send the form data object
         
     };
+
+    const form2 = document.getElementById("login");         // grab the form from index.html
+    const loginButton = document.getElementById("logButton");
+
+    loginButton.addEventListener( "click", function ( event ) {   // take over submit event from form
+        event.preventDefault();                             // cancels event if necessary
+        sendData2();
+    });
     
     function deleteUser(){
         const sendRequest = new XMLHttpRequest();                                     // create new HttpRequest
-        var userID = document.getElementById("idform").getAttribute('value');                   //new data form object
+        // append current ID to url to get appropriate endpoint
+        var userID = document.getElementById("idDelete").value; 
+        var url = "http://localhost:5000/app/delete/user/" + userID +"/";
 
         // error message 
         sendRequest.addEventListener( "error", function (event) {
@@ -72,7 +89,7 @@ window.addEventListener( "load", function () {
             alert("Form successfully submitted.");
         });
 
-        var url = "http://localhost:5000/app/delete/user/" + userID +"/";
+        
 
         sendRequest.open("DELETE", url);         // set up connection - args of HTTP method and endpoint
         //sending the request to backend
@@ -90,8 +107,8 @@ window.addEventListener( "load", function () {
     function updateScore() {
         const sendRequest = new XMLHttpRequest();                                     // create new HttpRequest
         const saveInfo = new URLSearchParams(new FormData(saveForm));                      //new data form object
-        
-        alert("updating score");
+        // append saved ID to url in order to updatee at the appropriate endpoint
+        var url = "http://localhost:5000/app/update/user/" + document.getElementById("idsave").getAttribute("value") +"/"
         // create new form data object
     
         // error message 
@@ -102,24 +119,16 @@ window.addEventListener( "load", function () {
         // success message
         sendRequest.addEventListener( "load", function (event) {
             alert("Form successfully submitted.");
+            alert(url);
         });
-    
-        sendRequest.open("PATCH", "/app/update/user/" + userID);         // set up connection - args of HTTP method and endpoint
+        
+        sendRequest.open("PATCH", url);         // set up connection - args of HTTP method and endpoint
         //sending the requrest to backend
         sendRequest.send( saveInfo );     
     }
 
-
-    const form2 = document.getElementById("login");         // grab the form from index.html
-    const loginButton = document.getElementById("logButton");
-
     const saveForm = document.getElementById("saveForm");
     const saveButton = document.getElementById("save");
-
-    loginButton.addEventListener( "click", function ( event ) {   // take over submit event from form
-        event.preventDefault();                             // cancels event if necessary
-        sendData2();
-    });
 
     saveButton.addEventListener( "click", function (event) {
         event.preventDefault();
