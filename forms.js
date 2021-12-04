@@ -54,10 +54,37 @@ window.addEventListener( "load", function () {
         sendRequest.send( signupInfo );                                     // send the form data object
         
     };
+    const form3 = document.getElementById("delete")          //grab delete form
+
+    form3.addEventListener( "submit", function ( event ) {   // take over submit event from form
+        event.preventDefault();                             // cancels event if necessary
+        deleteUser();
+    });
+    function deleteUser(){
+        const sendRequest = new XMLHttpRequest();                                     // create new HttpRequest
+        const deleteInfo = new URLSearchParams(new FormData( form3));                   //new data form object
+
+        // error message 
+        sendRequest.addEventListener( "error", function (event) {
+            alert("An error has occurred.");
+        });
+
+        // success message
+        sendRequest.addEventListener( "load", function (event) {
+            alert("Form successfully submitted.");
+        });
+
+        sendRequest.open("DELETE", "http://localhost:5000/app/delete/user/:id");         // set up connection - args of HTTP method and endpoint
+        //sending the requrest to backend
+        sendRequest.send( deleteInfo );                                     // send the form data object
+
+    }
 
     function updateScore() {
         const sendRequest = new XMLHttpRequest();                                     // create new HttpRequest
-        const saveInfo = new URLSearchParams(new FormData(form2));   
+        const saveInfo = new URLSearchParams(new FormData(form2));                      //new data form object
+
+        
         
         alert("updating score");
         // create new form data object
