@@ -8,7 +8,7 @@ A simple game where the user can click the cookie to gain points. Users can crea
 - Npm install browser-sync better-sqlite3 express md5
 - $ npm install concurrently
 - Npm install cors
-"scripts": {
+- "scripts": {
     "client": "npx browser-sync start -sw",
     "server": "node server.js",
     "start": "concurrently --kill-others 'npm run client' 'npm run server'"
