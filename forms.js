@@ -110,7 +110,7 @@ window.addEventListener( "load", function () {
         const saveInfo = new URLSearchParams(new FormData(saveForm));                      //new data form object
         // append saved ID to url in order to updatee at the appropriate endpoint
         var url = "http://localhost:5000/app/update/user/" + document.getElementById("idsave").value +"/"
-        alert(url);
+        
         // create new form data object
     
         // error message 

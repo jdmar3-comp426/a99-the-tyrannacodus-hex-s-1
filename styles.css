@@ -40,7 +40,7 @@ header {
     border-radius: 5px;
 }
 
-/*#usersave {
+#usersave {
     display: none;
 }
 
@@ -62,7 +62,7 @@ header {
 
 #idDelete {
     display: none;
-} */
+}
 
 ul {
     list-style-type: none;
