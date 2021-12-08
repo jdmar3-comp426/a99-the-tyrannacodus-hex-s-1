@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="forms.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <img id="logo" src="cookie.png" alt="Image of Cookie">
+        <h1 id="title">Cookie Clicker</h1>
+        <h3 id="currentUser"></h3>
+        <p id="clicks">0</p>
+        <form id="saveForm">
+            <input type="text" id="usersave" name="user" readonly>
+            <input type="text" id="passsave" name="pass" readonly>
+            <input type="number" id="idsave" name="id" readonly>
+            <input type="number" id="scoresave" name="score" readonly>
+            <button class="login-button-wide" id="save" type="submit">Save Score</button>
+        </form>
+    </header>
+
+    <main>
+        <h1>How to play</h1>
+        <p>Click the cookie :)</p>
+        <p>Log in to load your previous score.</p>
+        <p>Click Save Score while logged in to save a new high score.</p>
+        <p>When you create a new account, the current score will be saved.</p>
+    </main>
+
+<div id="id01">
+        <h2>Log In</h2>
+        <div class="container">
+            <form id="login">
+                <label for="user"><b>Username</b></label>
+                <input  type="text" placeholder="Enter Username" id="logUser" name="user" required>
+
+                <label for="pass"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="logPass" name="pass" required>
+
+                <button class="login-button-wide" id="logButton" type="submit">Log In</button>
+            </form>
+        </div>
+</div>
+
+<div id="id02">
+        <h2>Create An Account</h2>
+        <div class="container">
+            <form id="signup">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="user" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" required>
+
+                <input type="number" placeholder="Current Score" id="scoreForm" name="score" value="0" readonly>
+
+                <button class="login-button-wide" id="submit" type="submit">Sign Up</button>
+            </form>
+        </div>
+</div>
+
+<div id = "id03">
+    <h2>Delete your Account</h2>
+    <div class="container">
+        <form id="delete">
+            <input type="number" id="idDelete" name="id" readonly>
+            <button class="login-button-wide" id="deleteButton" type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // The following script handles updating the score after each click
+    var score = 0;
+
+    function click() {
+        score = score + 1;
+        document.getElementById("clicks").innerHTML = score;
+        document.getElementById("scoreForm").setAttribute('value', score);
+        document.getElementById("scoresave").setAttribute('value', score);
+
+        var loggedPass = document.getElementById("logPass").getAttribute("value");
+        if (loggedPass != undefined) {
+            document.getElementById("passsave").setAttribute("value", loggedPass);
+        }
+    };
+    document.getElementById("logo").addEventListener("click", click);
+</script>
+
+<script>
+    // This script saves the inputted password for updates.
+    function getPassword(){
+            // Selecting the input element and get its value 
+            var loggedPass = document.getElementById("logPass").value;
+            
+            // Displaying the value
+            document.getElementById("passsave").setAttribute("value", loggedPass);
+        }
+    
+    document.getElementById("logPass").addEventListener("change", getPassword);
+</script>
+
+</body>
+</html>
